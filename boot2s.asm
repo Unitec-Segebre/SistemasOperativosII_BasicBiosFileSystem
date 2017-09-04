@@ -11,8 +11,8 @@ mainloop:
 menu db '-- MENU --', 0x0D, 0x0A, 0
 format_disk db '1. Format disk', 0x0D, 0x0A, 0
 reserve_block db '2. Reserve block', 0x0D, 0x0A, 0
-stats db '3. Stats', 0x0D, 0x0A, 0
-free_block db '4. Free Block', 0x0D, 0x0A, 0
+free_block db '3. Free block', 0x0D, 0x0A, 0
+statistics db '4. Statistics', 0x0D, 0x0A, 0
 error_input db 'Wrong Input', 0x0D, 0x0A, 0
 
 print_string:
@@ -61,9 +61,9 @@ MainMenu:
 	call print_string
   	mov si, reserve_block
 	call print_string
-  	mov si, stats
-	call print_string
   	mov si, free_block
+	call print_string
+  	mov si, statistics
 	call print_string
 
 	call GetCharacter
@@ -131,21 +131,22 @@ callProgram2:
 
   	mov al, 3
 	mov cl, 5
-	mov bx, 0x8800
+	mov bx, 0x8200
 	int 0x13
 
-	call 0x8800
+	call 0x8200
   leave
   ret
 
 callProgram3:
   enter 0, 0
 
-	mov cl, 6
-	mov bx, 0x8000
+  	mov al, 9
+	mov cl, 8
+	mov bx, 0x8200
 	int 0x13
 
-	call 0x8000
+	call 0x8200
   leave
   ret
 

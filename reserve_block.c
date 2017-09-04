@@ -87,9 +87,6 @@ int main()
     writesect(buffer, 2, 0, 1);
 }
 
-
-//writesect(buffer, sector, track, side);
-
 /*
 Sector Size 512
 Sectores 	1-18
