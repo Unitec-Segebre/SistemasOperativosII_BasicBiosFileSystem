@@ -9,9 +9,9 @@ mainloop:
 	jmp mainloop
 
 menu db '-- MENU --', 0x0D, 0x0A, 0
-format db '1. Format', 0x0D, 0x0A, 0
-stats db '2. Stats', 0x0D, 0x0A, 0
-get_block db '3. Get Block', 0x0D, 0x0A, 0
+format_disk db '1. Format disk', 0x0D, 0x0A, 0
+reserve_block db '2. Reserve block', 0x0D, 0x0A, 0
+stats db '3. Stats', 0x0D, 0x0A, 0
 free_block db '4. Free Block', 0x0D, 0x0A, 0
 error_input db 'Wrong Input', 0x0D, 0x0A, 0
 
@@ -57,13 +57,13 @@ MainMenu:
 
 	mov si, menu
 	call print_string
-  mov si, format
+  	mov si, format_disk
 	call print_string
-  mov si, stats
+  	mov si, reserve_block
 	call print_string
-  mov si, get_block
+  	mov si, stats
 	call print_string
-  mov si, free_block
+  	mov si, free_block
 	call print_string
 
 	call GetCharacter
@@ -117,8 +117,8 @@ MainMenu:
 callProgram1:
 	enter 0, 0
 
-  mov al, 2
-	mov cl, 3
+  	mov al, 2
+	mov cl, 3 ;lo que voy a leer
 	mov bx, 0x8200 ;Must be one sector ahead for some reason
 	int 0x13
 
@@ -129,11 +129,12 @@ callProgram1:
 callProgram2:
   enter 0, 0
 
+  	mov al, 3
 	mov cl, 5
-	mov bx, 0x8000
+	mov bx, 0x8800
 	int 0x13
 
-	call 0x8000
+	call 0x8800
   leave
   ret
 

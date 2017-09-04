@@ -2,7 +2,7 @@
 
 #define FS_BLOCKS_PER_FD_BLOCK 	2
 #define FD_BLOCK_SIZE 			512
-#define BLOCK_COUNT 			1440
+#define BLOCK_COUNT 			25
 
 
 int main()
@@ -20,7 +20,7 @@ int main()
     bii = buffer + FD_BLOCK_SIZE - 2*sizeof(int);
     bii[0] = 19;
     bii[1] = BLOCK_COUNT-1;
-    writesect(buffer, 1, 0, 1);
+    writesect(buffer, 2, 0, 1);
     
     for(block_index = 19; block_index < BLOCK_COUNT; block_index++){
     	for(i = 0; i < FD_BLOCK_SIZE; i++)
@@ -33,6 +33,7 @@ int main()
 	    writesect(buffer, (block_index*FS_BLOCKS_PER_FD_BLOCK)-(18*((block_index*FS_BLOCKS_PER_FD_BLOCK)/18))+2, ((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)-(2*(((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)/2)), ((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)/2);
     }
 	printc('\n');
+	printc('\r');
 	printc('F');
 	printc('o');
 	printc('r');
@@ -50,10 +51,8 @@ int main()
 	printc('e');
 	printc('!');
 	printc('\n');
+	printc('\r');
 }
-
-
-//writesect(buffer, sector, track, side);
 
 /*
 Sector Size 512
