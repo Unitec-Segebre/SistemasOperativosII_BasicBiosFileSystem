@@ -2,7 +2,7 @@
 
 #define FS_BLOCKS_PER_FD_BLOCK 	2
 #define FD_BLOCK_SIZE 			512
-#define BLOCK_COUNT 			25
+#define BLOCK_COUNT 			1440
 
 
 int main()

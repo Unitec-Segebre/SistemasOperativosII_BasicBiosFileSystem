@@ -118,8 +118,8 @@ callProgram1:
 	enter 0, 0
 
   	mov al, 2
-	mov cl, 3 ;lo que voy a leer
-	mov bx, 0x8200 ;Must be one sector ahead for some reason
+	mov cl, 3
+	mov bx, 0x8200
 	int 0x13
 
 	call 0x8200
@@ -141,7 +141,7 @@ callProgram2:
 callProgram3:
   enter 0, 0
 
-  	mov al, 9
+  	mov al, 4
 	mov cl, 8
 	mov bx, 0x8200
 	int 0x13
@@ -153,11 +153,12 @@ callProgram3:
 callProgram4:
   enter 0, 0
 
-	mov cl, 7
-	mov bx, 0x8000
+  	mov al, 10	
+	mov cl, 12
+	mov bx, 0x8200
 	int 0x13
 
-	call 0x8000
+	call 0x8200
   leave
   ret
 
