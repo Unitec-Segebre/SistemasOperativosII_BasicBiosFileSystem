@@ -154,7 +154,7 @@ callProgram4:
   enter 0, 0
 
   	mov al, 2
-	;mov cl, 13
+	mov cl, 14
 	mov bx, 0x8200
 	int 0x13
 

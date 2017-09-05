@@ -24,7 +24,7 @@ cmpl:
 	dd if=format_disk.bin of=disk.flp bs=512 seek=2 conv=notrunc
 	dd if=reserve_block.bin of=disk.flp bs=512 seek=4 conv=notrunc
 	dd if=free_block.bin of=disk.flp bs=512 seek=9 conv=notrunc
-	dd if=statistics.bin of=disk.flp bs=512 seek=14 conv=notrunc
+	dd if=statistics.bin of=disk.flp bs=512 seek=13 conv=notrunc
 
 run:
 	qemu-system-x86_64 -fda disk.flp
