@@ -131,25 +131,18 @@ int main()
     }
     readsect(buffer, 2, 0, 1);
     bii = buffer + FD_BLOCK_SIZE - 2*sizeof(int);
-    block_index = bii[1];//block index guarda el ultimo viejo
-    bii[1] = block_index_to_free;//block index to free el ultimo nuevo
-    writesect(buffer, 2, 0, 1);//reescbribimos la metadata////////////////////////////SET_END
-    for(i = 0; i < FD_BLOCK_SIZE; i++)//limpiamos el buffer
-        buffer[i] = 0;//leemos el ultimo viejo
-    // readsect(buffer, (block_index*FS_BLOCKS_PER_FD_BLOCK)-(18*((block_index*FS_BLOCKS_PER_FD_BLOCK)/18))+2, ((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)-(2*(((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)/2)), ((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)/2);
+    block_index = bii[1];
+    bii[1] = block_index_to_free;
+    writesect(buffer, 2, 0, 1);
+    for(i = 0; i < FD_BLOCK_SIZE; i++)
+        buffer[i] = 0;
     bii = buffer + FD_BLOCK_SIZE - sizeof(int);
-    bii[0] = block_index_to_free;//el siguiente del ultimo viejo es el ultimo nuevo
-    //deberiamos escribirlo
-    // for(i = 0; i < FD_BLOCK_SIZE; i++)
-    //     buffer[i] = 0;
-    // block_index = block_index_to_free;
-    ///////////////////////////////////////////////////SET_NEXT_1
+    bii[0] = block_index_to_free;
     writesect(buffer, (block_index*FS_BLOCKS_PER_FD_BLOCK)-(18*((block_index*FS_BLOCKS_PER_FD_BLOCK)/18))+2, ((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)-(2*(((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)/2)), ((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)/2);
-    for(i = 0; i < FD_BLOCK_SIZE; i++)//limpiamos el buffer
+    for(i = 0; i < FD_BLOCK_SIZE; i++)
         buffer[i] = 0;
     block_index = block_index_to_free;
     writesect(buffer, (block_index*FS_BLOCKS_PER_FD_BLOCK)-(18*((block_index*FS_BLOCKS_PER_FD_BLOCK)/18))+2, ((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)-(2*(((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)/2)), ((block_index*FS_BLOCKS_PER_FD_BLOCK)/18)/2);
-
 }
 
 /*

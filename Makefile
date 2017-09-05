@@ -1,4 +1,4 @@
-all:
+cmpl:
 	dd if=/dev/zero of=disk.flp bs=512 count=2880
 	nasm boot1s.asm -f bin -o boot1s.bin
 	nasm boot2s.asm -f bin -o boot2s.bin
@@ -20,6 +20,10 @@ all:
 
 run:
 	qemu-system-x86_64 -fda disk.flp
+
+all:
+	cmpl
+	run
 
 clean:
 	rm *.bin
