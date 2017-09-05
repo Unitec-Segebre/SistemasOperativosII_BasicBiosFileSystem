@@ -129,7 +129,7 @@ callProgram1:
 callProgram2:
   enter 0, 0
 
-  	mov al, 3
+  	mov al, 5;3
 	mov cl, 5
 	mov bx, 0x8200
 	int 0x13
@@ -142,7 +142,7 @@ callProgram3:
   enter 0, 0
 
   	mov al, 4
-	mov cl, 8
+	mov cl, 10
 	mov bx, 0x8200
 	int 0x13
 
@@ -153,8 +153,8 @@ callProgram3:
 callProgram4:
   enter 0, 0
 
-  	mov al, 10	
-	mov cl, 12
+  	mov al, 2
+	;mov cl, 13
 	mov bx, 0x8200
 	int 0x13
 
