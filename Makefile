@@ -18,6 +18,9 @@ all:
 	dd if=reserve_block.bin of=disk.flp bs=512 seek=4 conv=notrunc
 	dd if=free_block.bin of=disk.flp bs=512 seek=7 conv=notrunc
 
+run:
+	qemu-system-x86_64 -fda disk.flp
+
 clean:
 	rm *.bin
 	rm *.o
